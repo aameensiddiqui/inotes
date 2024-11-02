@@ -5,20 +5,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
 	const location = useLocation();
 	return (
-		<nav
-			className="navbar navbar-expand-lg fixed-top navbar-primary bg-primary"
-			style={{
-				height: "70px",
-				padding: "10px 30px",
-				boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
-				borderRadius: "0 0 10px 10px",
-			}}>
+		<nav className="navbar navbar-expand-lg navbar-primary bg-primary">
 			<div className="container-fluid">
-				<Link
-					className="navbar-brand"
-					to="/"
-					style={{ fontSize: "30px", color: "white", fontWeight: "bold" }}>
-					iNote
+				<Link className="navbar-brand" to="/" style={{ color: "white" }}>
+					iNotes
 				</Link>
 				<button
 					className="navbar-toggler"
@@ -31,7 +21,7 @@ function Navbar() {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div
-					className="collapse navbar-collapse mx-5"
+					className="collapse navbar-collapse mx-3"
 					id="navbarSupportedContent">
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
@@ -41,7 +31,7 @@ function Navbar() {
 								}`}
 								aria-current="page"
 								to="/"
-								style={{ fontSize: "20px", color: "white" }}>
+								style={{ color: "white" }}>
 								Home
 							</Link>
 						</li>
@@ -51,23 +41,27 @@ function Navbar() {
 									location.pathname === "/about" ? "active" : ""
 								}`}
 								to="/about"
-								style={{ fontSize: "20px", color: "white" }}>
+								style={{ color: "white" }}>
 								About
 							</Link>
 						</li>
 					</ul>
-					<form className="d-flex" role="search">
-						<input
-							className="form-control me-2"
-							type="search"
-							placeholder="Search"
-							aria-label="Search"
-							style={{ backgroundColor: "#e9e3ff" }}
-						/>
-						<button className="btn btn-outline-light" type="submit">
-							Search
-						</button>
-					</form>
+					<div>
+						<Link
+							className="btn btn-outline-light mx-1"
+							role="button"
+							aria-disabled="true"
+							to="/login">
+							Login
+						</Link>
+						<Link
+							className="btn btn-outline-light mx-1"
+							role="button"
+							aria-disabled="true"
+							to="/signup">
+							Signup
+						</Link>
+					</div>
 				</div>
 			</div>
 		</nav>

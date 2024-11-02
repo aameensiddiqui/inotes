@@ -10,7 +10,7 @@ function Noteitem(props) {
 		<div className="col-md-3 my-3">
 			<div
 				className="card"
-				style={{ width: "18rem", border: "none", backgroundColor: "#e9e3ff" }}>
+				style={{ width: "14rem", border: "none", backgroundColor: "#e9e3ff" }}>
 				<div className="card-body">
 					<h5 className="card-title">{note.title}</h5>
 					<p className="card-text">{note.description}</p>

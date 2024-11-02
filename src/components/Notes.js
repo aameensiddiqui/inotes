@@ -38,12 +38,6 @@ function Notes() {
 	const handleSubmit = (e) => {
 		editNote(note.id, note.etitle, note.edescription, note.etag);
 		refClose.current.click();
-		// setNote({
-		// 	id: "",
-		// 	title: "",
-		// 	description: "",
-		// 	tag: "",
-		// });
 	};
 	const onChange = (e) => {
 		setNote({ ...note, [e.target.name]: e.target.value });
@@ -138,7 +132,7 @@ function Notes() {
 					</div>
 				</div>
 			</div>
-			<div className="container mx-5 row my-3">
+			<div className="container mx-5 row">
 				<h2>Your Notes</h2>
 				{notes.length === 0 && "No notes to show here..."}
 				{notes

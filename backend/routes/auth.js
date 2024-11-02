@@ -21,16 +21,17 @@ router.post(
 	async (req, res) => {
 		try {
 			//if there are errors send a bad request
+			let success = false;
 			const errors = validationResult(req);
 			if (!errors.isEmpty()) {
-				return res.status(400).json({ errors: errors.array() });
+				return res.status(400).json({ success, errors: errors.array() });
 			}
 			//if a user with same email exists already send a bad request
 			let user = await User.findOne({ email: req.body.email });
 			if (user) {
 				return res
 					.status(400)
-					.json({ errors: "User with this email already exists." });
+					.json({ success, errors: "User with this email already exists." });
 			}
 			// adding salt to the password to make it secure
 			// with the help of a one way function from bcryptjs (hash)
@@ -48,7 +49,8 @@ router.post(
 			const authtoken = jwt.sign(data, JWT_SECRETKEY);
 			// send the information. can send user, makes no sense, so send auth key
 			//// res.json(user);
-			res.json({ authtoken });
+			success = true;
+			res.json({ success, authtoken });
 		} catch (e) {
 			console.error(e.message);
 			res.status(500).send("Some error ocurred.");
@@ -66,6 +68,7 @@ router.post(
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
+		let success = false;
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
 		}
@@ -92,7 +95,8 @@ router.post(
 			//	if both credentials are correct, send the payload
 			const data = { user: { id: user.id } };
 			const authtoken = jwt.sign(data, JWT_SECRETKEY);
-			res.json({ authtoken });
+			success = true;
+			res.json({ success, authtoken });
 		} catch (e) {
 			console.error(e.message);
 			res.status(500).send("Internal Server Error");

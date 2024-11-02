@@ -1,11 +1,12 @@
 import React from "react";
 import Notes from "./Notes";
 
-function Home() {
+function Home(props) {
+	const { handleAlert } = props;
 	return (
 		<>
 			<div className="container">
-				<Notes />
+				<Notes handleAlert={handleAlert} />
 			</div>
 		</>
 	);
