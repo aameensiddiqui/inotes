@@ -12,9 +12,16 @@ function Noteitem(props) {
 				className="card"
 				style={{ width: "14rem", border: "none", backgroundColor: "#e9e3ff" }}>
 				<div className="card-body">
-					<h5 className="card-title">{note.title}</h5>
-					<p className="card-text">{note.description}</p>
-					<p className="card-text">{note.tag}</p>
+					<h4 className="card-title">{note.title}</h4>
+					<p className="card-text" style={{ fontSize: "19px" }}>
+						{note.description}
+					</p>
+					{note.tag ? (
+						<p className="card-text">({note.tag})</p>
+					) : (
+						<p className="card-text">{note.tag}</p>
+					)}
+
 					<i
 						className="far fa-trash-alt mx-2"
 						onClick={() => {

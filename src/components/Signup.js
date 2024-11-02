@@ -35,7 +35,10 @@ function Signup(props) {
 				navigate("/login");
 				props.handleAlert("Account Created Successfully", "success");
 			} else {
-				props.handleAlert("Incorrect Credentials.", "danger");
+				props.handleAlert(
+					"Email already in use. Use a different email",
+					"danger"
+				);
 			}
 		} else {
 			props.handleAlert("Passwords do not match", "danger");
@@ -48,12 +51,9 @@ function Signup(props) {
 
 	return (
 		<div className="container my-1" style={{ padding: "70px" }}>
-			<h1 className="my-2">Signup to use iNotes</h1>
+			<h1 className="my-2">Create a new account</h1>
 			<form onSubmit={handleSubmitLogin}>
 				<div className="mb-4 my-3" htmlFor="name">
-					{/* <label htmlFor="name" className="form-label">
-						Name
-					</label> */}
 					<input
 						placeholder="Name"
 						type="text"
@@ -67,9 +67,6 @@ function Signup(props) {
 					/>
 				</div>
 				<div className="mb-4" htmlFor="email">
-					{/* <label htmlFor="email" className="form-label">
-						Email
-					</label> */}
 					<input
 						placeholder="Email"
 						type="email"
@@ -83,9 +80,6 @@ function Signup(props) {
 					/>
 				</div>
 				<div className="mb-4" htmlFor="password">
-					{/* <label htmlFor="password" className="form-label">
-						Password
-					</label> */}
 					<input
 						placeholder="Password"
 						type="password"
@@ -99,9 +93,6 @@ function Signup(props) {
 					/>
 				</div>
 				<div className="mb-4" htmlFor="cpassword">
-					{/* <label htmlFor="cpassword" className="form-label">
-						Confirm Password
-					</label> */}
 					<input
 						placeholder="Confirm Password"
 						type="password"

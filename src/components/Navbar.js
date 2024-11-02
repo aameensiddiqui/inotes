@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import noteContext from "../context/notes/noteContext";
 
 function Navbar() {
 	const location = useLocation();
@@ -8,6 +9,14 @@ function Navbar() {
 		localStorage.removeItem("token");
 		navigate("/login");
 	};
+	const context = useContext(noteContext);
+	const { info, getUserInfo } = context;
+	useEffect(() => {
+		setTimeout(() => {
+			getUserInfo();
+		}, 100);
+	});
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-primary bg-primary">
 			<div className="container-fluid">
@@ -68,9 +77,36 @@ function Navbar() {
 							</Link>
 						</div>
 					) : (
-						<button className="btn btn-outline-light" onClick={handleLogout}>
-							Logout
-						</button>
+						<div>
+							<ul className="navbar-nav me-auto mb-1 mb-lg-0">
+								<li className="nav-item dropdown mx-5">
+									<Link
+										className="nav-link dropdown-toggle"
+										to="/"
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
+										style={{ color: "white" }}>
+										User Info
+									</Link>
+									<ul className="dropdown-menu">
+										<li>
+											<p className="dropdown-item">{info.name}</p>
+										</li>
+										<li>
+											<p className="dropdown-item">{info.email}</p>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<button
+										className="btn btn-outline-light"
+										onClick={handleLogout}>
+										Logout
+									</button>
+								</li>
+							</ul>
+						</div>
 					)}
 				</div>
 			</div>

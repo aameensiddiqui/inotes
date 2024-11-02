@@ -29,7 +29,7 @@ function App() {
 				<Navbar />
 				<Alert alert={alertMsg} />
 				<Routes>
-					<Route element={<ProtectedRoute />}>
+					<Route element={<ProtectedRoute handleAlert={handleAlert} />}>
 						<Route path="/" element={<Home handleAlert={handleAlert} />} />
 					</Route>
 					<Route path="/about" element={<About />} />
