@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 
-const Addnote = () => {
+const Addnote = (props) => {
 	const context = useContext(noteContext);
 	const { addNote } = context;
 
@@ -14,12 +14,15 @@ const Addnote = () => {
 		e.preventDefault();
 		addNote(note.title, note.description, note.tag);
 		setNote({ title: "", description: "", tag: "" });
+		props.handleAlert("Note added successfully", "success");
 	};
 	const onChange = (e) => {
 		setNote({ ...note, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className="container my-3" style={{ padding: "70px" }}>
+		<div
+			className="container my-3"
+			style={{ padding: "70px", paddingBottom: "5px" }}>
 			<h1>Add a note</h1>
 			<form className="my-3">
 				<div className="mb-3" htmlFor="title">
@@ -66,7 +69,7 @@ const Addnote = () => {
 					type="submit"
 					className="btn btn-primary"
 					disabled={note.title.length < 1 || note.description.length < 1}>
-					Create
+					Add
 				</button>
 			</form>
 		</div>

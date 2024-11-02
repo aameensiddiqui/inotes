@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { useState } from "react";
 import Alert from "./components/Alert";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 	const [alertMsg, setAlertMsg] = useState(null);
@@ -28,7 +29,9 @@ function App() {
 				<Navbar />
 				<Alert alert={alertMsg} />
 				<Routes>
-					<Route path="/" element={<Home handleAlert={handleAlert} />} />
+					<Route element={<ProtectedRoute />}>
+						<Route path="/" element={<Home handleAlert={handleAlert} />} />
+					</Route>
 					<Route path="/about" element={<About />} />
 					<Route path="/login" element={<Login handleAlert={handleAlert} />} />
 					<Route

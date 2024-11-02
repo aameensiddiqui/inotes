@@ -12,8 +12,7 @@ const NoteState = (props) => {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
-				"auth-token":
-					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjcxZmExNDVhODJkMjUyMjBiYmQxMTM3In0sImlhdCI6MTczMDEyNjE0OX0.hrVKBoZYu6iYCdUatw2S1atwW6IDp6F0_9n0_mD5-uU",
+				"auth-token": localStorage.getItem("token"),
 			},
 		});
 		const json = await response.json();
@@ -26,8 +25,7 @@ const NoteState = (props) => {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"auth-token":
-					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjcxZmExNDVhODJkMjUyMjBiYmQxMTM3In0sImlhdCI6MTczMDEyNjE0OX0.hrVKBoZYu6iYCdUatw2S1atwW6IDp6F0_9n0_mD5-uU",
+				"auth-token": localStorage.getItem("token"),
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
@@ -41,12 +39,11 @@ const NoteState = (props) => {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",
-				"auth-token":
-					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjcxZmExNDVhODJkMjUyMjBiYmQxMTM3In0sImlhdCI6MTczMDEyNjE0OX0.hrVKBoZYu6iYCdUatw2S1atwW6IDp6F0_9n0_mD5-uU",
+				"auth-token": localStorage.getItem("token"),
 			},
 		});
 		const json = await response.json();
-		// console.log(json);
+		console.log(json);
 		const n = notes.filter((note) => {
 			return note._id !== id;
 		});
@@ -59,13 +56,12 @@ const NoteState = (props) => {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
-				"auth-token":
-					"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjcxZmExNDVhODJkMjUyMjBiYmQxMTM3In0sImlhdCI6MTczMDEyNjE0OX0.hrVKBoZYu6iYCdUatw2S1atwW6IDp6F0_9n0_mD5-uU",
+				"auth-token": localStorage.getItem("token"),
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
 		const json = await response.json();
-		// console.log(json);
+		console.log(json);
 		let newNotes = JSON.parse(JSON.stringify(notes));
 		for (let index = 0; index < newNotes.length; index++) {
 			const element = newNotes[index];

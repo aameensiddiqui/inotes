@@ -3,7 +3,8 @@ import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 
-function Notes() {
+function Notes(props) {
+	// const navigate = useNavigate();
 	const context = useContext(noteContext);
 
 	const { notes, getNotes, editNote } = context;
@@ -38,13 +39,14 @@ function Notes() {
 	const handleSubmit = (e) => {
 		editNote(note.id, note.etitle, note.edescription, note.etag);
 		refClose.current.click();
+		props.handleAlert("Changes Saved", "success");
 	};
 	const onChange = (e) => {
 		setNote({ ...note, [e.target.name]: e.target.value });
 	};
 	return (
 		<>
-			<Addnote />
+			<Addnote handleAlert={props.handleAlert} />
 			<button
 				ref={ref}
 				type="button"
@@ -140,7 +142,12 @@ function Notes() {
 					.reverse()
 					.map((note) => {
 						return (
-							<Noteitem key={note._id} updateNote={updateNote} note={note} />
+							<Noteitem
+								key={note._id}
+								updateNote={updateNote}
+								note={note}
+								handleAlert={props.handleAlert}
+							/>
 						);
 					})}
 			</div>
