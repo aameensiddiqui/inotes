@@ -30,8 +30,8 @@ function About() {
 										clean and simple interface.
 									</li>
 									<li>
-										<strong>Edit Notes:</strong> Make changes or add details to
-										existing notes anytime.
+										<strong>Edit Notes:</strong> Make changes to existing notes
+										anytime.
 									</li>
 									<li>
 										<strong>Delete Notes:</strong> Remove notes that you no
@@ -92,7 +92,7 @@ function About() {
 								Your privacy is our priority.
 								<ul>
 									<li>
-										<strong>Password Protection:</strong> Safeguard your notes
+										<strong>Password Protection:</strong> Safeguard your account
 										with a password to prevent unauthorized access.
 									</li>
 								</ul>

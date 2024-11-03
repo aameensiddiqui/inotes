@@ -134,7 +134,7 @@ function Notes(props) {
 					</div>
 				</div>
 			</div>
-			<div className="container mx-5 row">
+			<div className="container-fluid mx-5 row">
 				<h2>Your Notes</h2>
 				{notes.length === 0 && "No notes to show here..."}
 				{notes

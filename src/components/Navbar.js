@@ -77,24 +77,29 @@ function Navbar() {
 							</Link>
 						</div>
 					) : (
-						<div>
+						<div class="dropdown-center">
 							<ul className="navbar-nav me-auto mb-1 mb-lg-0">
 								<li className="nav-item dropdown mx-5">
 									<Link
 										className="nav-link dropdown-toggle"
-										to="/"
 										role="button"
 										data-bs-toggle="dropdown"
 										aria-expanded="false"
 										style={{ color: "white" }}>
-										User Info
+										{info.name}
 									</Link>
 									<ul className="dropdown-menu">
+										{/* <li>
+											<p className="dropdown-item" style={{ fontSize: "13px" }}>
+												{info.name}
+											</p>
+										</li> */}
 										<li>
-											<p className="dropdown-item">{info.name}</p>
-										</li>
-										<li>
-											<p className="dropdown-item">{info.email}</p>
+											<h1
+												className="dropdown-item"
+												style={{ fontSize: "13px" }}>
+												{info.email}
+											</h1>
 										</li>
 									</ul>
 								</li>
