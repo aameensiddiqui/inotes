@@ -11,6 +11,16 @@ import Alert from "./components/Alert";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+	const [theme, setTheme] = useState("primary");
+	const handleChangeTheme = () => {
+		if (theme === "dark") {
+			document.body.style.backgroundColor = "white";
+			setTheme("primary");
+		} else {
+			document.body.style.backgroundColor = "rgb(43 43 48)";
+			setTheme("dark");
+		}
+	};
 	const [alertMsg, setAlertMsg] = useState(null);
 
 	const handleAlert = (message, type) => {
@@ -26,17 +36,23 @@ function App() {
 	return (
 		<NoteState>
 			<Router>
-				<Navbar />
+				<Navbar theme={theme} handleChangeTheme={handleChangeTheme} />
 				<Alert alert={alertMsg} />
 				<Routes>
 					<Route element={<ProtectedRoute handleAlert={handleAlert} />}>
-						<Route path="/" element={<Home handleAlert={handleAlert} />} />
+						<Route
+							path="/"
+							element={<Home handleAlert={handleAlert} theme={theme} />}
+						/>
 					</Route>
-					<Route path="/about" element={<About />} />
-					<Route path="/login" element={<Login handleAlert={handleAlert} />} />
+					<Route path="/about" element={<About theme={theme} />} />
+					<Route
+						path="/login"
+						element={<Login handleAlert={handleAlert} theme={theme} />}
+					/>
 					<Route
 						path="/signup"
-						element={<Signup handleAlert={handleAlert} />}
+						element={<Signup handleAlert={handleAlert} theme={theme} />}
 					/>
 				</Routes>
 			</Router>

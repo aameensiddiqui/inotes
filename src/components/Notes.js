@@ -8,6 +8,7 @@ function Notes(props) {
 	const context = useContext(noteContext);
 
 	const { notes, getNotes, editNote } = context;
+	const { theme } = props;
 
 	useEffect(() => {
 		getNotes();
@@ -46,7 +47,7 @@ function Notes(props) {
 	};
 	return (
 		<>
-			<Addnote handleAlert={props.handleAlert} />
+			<Addnote handleAlert={props.handleAlert} theme={theme} />
 			<button
 				ref={ref}
 				type="button"
@@ -62,23 +63,37 @@ function Notes(props) {
 				aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				<div className="modal-dialog">
-					<div className="modal-content">
+					<div
+						className="modal-content"
+						style={{
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(43 43 48)" : "#e9e3ff",
+						}}>
 						<div className="modal-header">
-							<h1 className="modal-title fs-5" id="exampleModalLabel">
+							<h1
+								className="modal-title fs-5"
+								id="exampleModalLabel"
+								style={{ color: props.theme === "dark" ? "white" : "black" }}>
 								Edit Note
 							</h1>
 							<button
 								type="button"
 								className="btn-close"
 								data-bs-dismiss="modal"
-								aria-label="Close"></button>
+								aria-label="Close"
+								style={{
+									backgroundColor: props.theme === "dark" ? "white" : "black",
+								}}></button>
 						</div>
 						<div className="modal-body">
 							<form>
 								<div className="mb-3" htmlFor="title">
 									<input
 										type="text"
-										className="form-control"
+										className={`form-control ${
+											props.theme === "dark" ? "dark-theme" : "light-theme"
+										}`}
 										id="etitle"
 										name="etitle"
 										placeholder="Title"
@@ -86,11 +101,19 @@ function Notes(props) {
 										value={note.etitle}
 										minLength={1}
 										required
+										style={{
+											border: "none",
+											color: props.theme === "dark" ? "white" : "black",
+											backgroundColor:
+												props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+										}}
 									/>
 								</div>
 								<div className="mb-3" htmlFor="description">
 									<textarea
-										className="form-control"
+										className={`form-control ${
+											props.theme === "dark" ? "dark-theme" : "light-theme"
+										}`}
 										placeholder="Take a note..."
 										id="edescription"
 										name="edescription"
@@ -98,17 +121,31 @@ function Notes(props) {
 										onChange={onChange}
 										value={note.edescription}
 										minLength={1}
+										style={{
+											border: "none",
+											color: props.theme === "dark" ? "white" : "black",
+											backgroundColor:
+												props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+										}}
 										required></textarea>
 								</div>
 								<div className="mb-3" htmlFor="tag">
 									<input
 										type="text"
-										className="form-control"
+										className={`form-control ${
+											props.theme === "dark" ? "dark-theme" : "light-theme"
+										}`}
 										id="etag"
 										name="etag"
 										placeholder="Enter a tag..."
 										onChange={onChange}
 										value={note.etag}
+										style={{
+											border: "none",
+											color: props.theme === "dark" ? "white" : "black",
+											backgroundColor:
+												props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+										}}
 									/>
 								</div>
 							</form>
@@ -123,7 +160,9 @@ function Notes(props) {
 							</button>
 							<button
 								type="button"
-								className="btn btn-primary"
+								className={`btn btn-${
+									props.theme === "dark" ? "info" : "primary"
+								}`}
 								onClick={handleSubmit}
 								disabled={
 									note.etitle.length < 1 || note.edescription.length < 1
@@ -134,7 +173,9 @@ function Notes(props) {
 					</div>
 				</div>
 			</div>
-			<div className="container-fluid mx-5 row">
+			<div
+				className="container-fluid mx-5 row"
+				style={{ color: props.theme === "dark" ? "white" : "black" }}>
 				<h2>Your Notes</h2>
 				{notes.length === 0 && "No notes to show here..."}
 				{notes
@@ -147,6 +188,7 @@ function Notes(props) {
 								updateNote={updateNote}
 								note={note}
 								handleAlert={props.handleAlert}
+								theme={theme}
 							/>
 						);
 					})}

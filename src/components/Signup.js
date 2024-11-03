@@ -51,61 +51,95 @@ function Signup(props) {
 
 	return (
 		<div className="container my-1" style={{ padding: "70px" }}>
-			<h1 className="my-2">Create a new account</h1>
+			<h1
+				className="my-2"
+				style={{ color: props.theme === "dark" ? "white" : "black" }}>
+				Create a new account
+			</h1>
 			<form onSubmit={handleSubmitLogin}>
 				<div className="mb-4 my-3" htmlFor="name">
 					<input
 						placeholder="Name"
 						type="text"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="name"
 						name="name"
 						onChange={onChange}
 						minLength={3}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
 				<div className="mb-4" htmlFor="email">
 					<input
 						placeholder="Email"
 						type="email"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="email"
 						name="email"
 						aria-describedby="emailHelp"
 						onChange={onChange}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
 				<div className="mb-4" htmlFor="password">
 					<input
 						placeholder="Password"
 						type="password"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="password"
 						name="password"
 						onChange={onChange}
 						minLength={5}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
 				<div className="mb-4" htmlFor="cpassword">
 					<input
 						placeholder="Confirm Password"
 						type="password"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="cpassword"
 						name="cpassword"
 						onChange={onChange}
 						minLength={5}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button
+					type="submit"
+					className={`btn btn-${props.theme === "dark" ? "info" : "primary"}`}>
 					Signup
 				</button>
 			</form>

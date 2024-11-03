@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import noteContext from "../context/notes/noteContext";
 
-function Navbar() {
+function Navbar(props) {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const handleLogout = () => {
@@ -18,7 +18,8 @@ function Navbar() {
 	});
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-primary bg-primary">
+		<nav
+			className={`navbar navbar-expand-lg navbar-${props.theme} bg-${props.theme}`}>
 			<div className="container-fluid">
 				<Link className="navbar-brand" to="/" style={{ color: "white" }}>
 					iNotes
@@ -59,6 +60,18 @@ function Navbar() {
 							</Link>
 						</li>
 					</ul>
+					<img
+						// src={props.theme === "dark" ? "/contrast (1).png" : "/night.png"}
+						src={"./day-night.png"}
+						alt="Toggle Theme"
+						onClick={props.handleChangeTheme}
+						style={{
+							width: "35px",
+							height: "35px",
+							cursor: "pointer",
+							marginRight: "15px",
+						}}
+					/>
 					{!localStorage.getItem("token") ? (
 						<div>
 							<Link
@@ -77,9 +90,9 @@ function Navbar() {
 							</Link>
 						</div>
 					) : (
-						<div class="dropdown-center">
+						<div className="dropdown-center">
 							<ul className="navbar-nav me-auto mb-1 mb-lg-0">
-								<li className="nav-item dropdown mx-5">
+								<li className="nav-item dropdown mx-3">
 									<Link
 										className="nav-link dropdown-toggle"
 										role="button"
@@ -88,7 +101,12 @@ function Navbar() {
 										style={{ color: "white" }}>
 										{info.name}
 									</Link>
-									<ul className="dropdown-menu">
+									<ul
+										className="dropdown-menu"
+										style={{
+											backgroundColor:
+												props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+										}}>
 										{/* <li>
 											<p className="dropdown-item" style={{ fontSize: "13px" }}>
 												{info.name}
@@ -97,7 +115,14 @@ function Navbar() {
 										<li>
 											<h1
 												className="dropdown-item"
-												style={{ fontSize: "13px" }}>
+												style={{
+													fontSize: "13px",
+													color: props.theme === "dark" ? "white" : "black",
+													backgroundColor:
+														props.theme === "dark"
+															? "rgb(86 86 86)"
+															: "#e9e3ff",
+												}}>
 												{info.email}
 											</h1>
 										</li>

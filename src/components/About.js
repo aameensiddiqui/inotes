@@ -1,11 +1,21 @@
 import React from "react";
 // import noteContext from "../context/notes/noteContext";
 
-function About() {
+function About(props) {
 	return (
-		<div className="container my-3" style={{ padding: "70px" }}>
+		<div
+			className="container my-3"
+			style={{
+				padding: "70px",
+			}}>
 			<div className="accordion" id="accordionPanelsStayOpenExample">
-				<div className="accordion-item">
+				<div
+					className="accordion-item"
+					style={{
+						border: "none",
+						color: props.theme === "dark" ? "white" : "black",
+						backgroundColor: props.theme === "dark" ? "rgb(86 86 86)" : "white",
+					}}>
 					<h2 className="accordion-header">
 						<button
 							className="accordion-button"
@@ -13,7 +23,12 @@ function About() {
 							data-bs-toggle="collapse"
 							data-bs-target="#panelsStayOpen-collapseOne"
 							aria-expanded="true"
-							aria-controls="panelsStayOpen-collapseOne">
+							aria-controls="panelsStayOpen-collapseOne"
+							style={{
+								border: "none",
+								color: props.theme === "dark" ? "white" : "black",
+								backgroundColor: props.theme === "dark" ? "#2a2a2a" : "#e9e3ff",
+							}}>
 							About iNote
 						</button>
 					</h2>
@@ -42,7 +57,13 @@ function About() {
 						</div>
 					</div>
 				</div>
-				<div className="accordion-item">
+				<div
+					className="accordion-item"
+					style={{
+						border: "none",
+						color: props.theme === "dark" ? "white" : "black",
+						backgroundColor: props.theme === "dark" ? "rgb(86 86 86)" : "white",
+					}}>
 					<h2 className="accordion-header">
 						<button
 							className="accordion-button collapsed"
@@ -50,7 +71,12 @@ function About() {
 							data-bs-toggle="collapse"
 							data-bs-target="#panelsStayOpen-collapseTwo"
 							aria-expanded="false"
-							aria-controls="panelsStayOpen-collapseTwo">
+							aria-controls="panelsStayOpen-collapseTwo"
+							style={{
+								border: "none",
+								color: props.theme === "dark" ? "white" : "black",
+								backgroundColor: props.theme === "dark" ? "#2a2a2a" : "#e9e3ff",
+							}}>
 							Getting Started
 						</button>
 					</h2>
@@ -72,7 +98,13 @@ function About() {
 						</div>
 					</div>
 				</div>
-				<div className="accordion-item">
+				<div
+					className="accordion-item"
+					style={{
+						border: "none",
+						color: props.theme === "dark" ? "white" : "black",
+						backgroundColor: props.theme === "dark" ? "rgb(86 86 86)" : "white",
+					}}>
 					<h2 className="accordion-header">
 						<button
 							className="accordion-button collapsed"
@@ -80,7 +112,12 @@ function About() {
 							data-bs-toggle="collapse"
 							data-bs-target="#panelsStayOpen-collapseThree"
 							aria-expanded="false"
-							aria-controls="panelsStayOpen-collapseThree">
+							aria-controls="panelsStayOpen-collapseThree"
+							style={{
+								border: "none",
+								color: props.theme === "dark" ? "white" : "black",
+								backgroundColor: props.theme === "dark" ? "#2a2a2a" : "#e9e3ff",
+							}}>
 							Privacy
 						</button>
 					</h2>

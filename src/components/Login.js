@@ -33,7 +33,11 @@ function Login(props) {
 	};
 	return (
 		<div className="container my-1" style={{ padding: "70px" }}>
-			<h1 className="my-2">Login to continue</h1>
+			<h1
+				className="my-2"
+				style={{ color: props.theme === "dark" ? "white" : "black" }}>
+				Login to continue
+			</h1>
 			<form onSubmit={handleSubmitLogin}>
 				<div className="mb-4 my-3" htmlFor="email">
 					{/* <label htmlFor="email" className="form-label">
@@ -42,13 +46,20 @@ function Login(props) {
 					<input
 						type="email"
 						placeholder="Email"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="email"
 						name="email"
 						aria-describedby="emailHelp"
 						onChange={onChange}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
 				<div className="mb-4" htmlFor="password">
@@ -58,16 +69,25 @@ function Login(props) {
 					<input
 						type="password"
 						placeholder="Password"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="password"
 						name="password"
 						onChange={onChange}
 						minLength={5}
 						required
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button
+					type="submit"
+					className={`btn btn-${props.theme === "dark" ? "info" : "primary"}`}>
 					Login
 				</button>
 			</form>

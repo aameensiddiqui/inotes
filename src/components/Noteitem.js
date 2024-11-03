@@ -23,7 +23,12 @@ function Noteitem(props) {
 		<div className="col-md-11 my-3">
 			<div
 				className="card"
-				style={{ width: "100%", border: "none", backgroundColor: "#e9e3ff" }}>
+				style={{
+					width: "100%",
+					border: "none",
+					color: props.theme === "dark" ? "white" : "black",
+					backgroundColor: props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+				}}>
 				<div className="card-body">
 					<h5 className="card-title">{note.title}</h5>
 					<p className="card-text" style={{ fontSize: "15px" }}>

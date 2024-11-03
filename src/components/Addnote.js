@@ -22,14 +22,25 @@ const Addnote = (props) => {
 	return (
 		<div
 			className="container my-3"
-			style={{ padding: "70px", paddingBottom: "5px" }}>
+			style={{
+				padding: "70px",
+				paddingBottom: "5px",
+				color: props.theme === "dark" ? "white" : "black",
+			}}>
 			<h1>Add a note</h1>
 			<form className="my-3">
 				<div className="mb-3" htmlFor="title">
 					<input
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 						type="text"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="title"
 						name="title"
 						placeholder="Title..."
@@ -42,9 +53,13 @@ const Addnote = (props) => {
 						style={{
 							border: "none",
 							height: "200px",
-							backgroundColor: "#e9e3ff",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
 						}}
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						placeholder="Take a note..."
 						id="description"
 						name="description"
@@ -54,9 +69,16 @@ const Addnote = (props) => {
 				</div>
 				<div className="mb-3" htmlFor="tag">
 					<input
-						style={{ border: "none", backgroundColor: "#e9e3ff" }}
+						style={{
+							border: "none",
+							color: props.theme === "dark" ? "white" : "black",
+							backgroundColor:
+								props.theme === "dark" ? "rgb(86 86 86)" : "#e9e3ff",
+						}}
 						type="text"
-						className="form-control"
+						className={`form-control ${
+							props.theme === "dark" ? "dark-theme" : "light-theme"
+						}`}
 						id="tag"
 						name="tag"
 						placeholder="Give a tag..."
@@ -67,7 +89,7 @@ const Addnote = (props) => {
 				<button
 					onClick={handleSubmit}
 					type="submit"
-					className="btn btn-primary"
+					className={`btn btn-${props.theme === "dark" ? "info" : "primary"}`}
 					disabled={note.title.length < 1 || note.description.length < 1}>
 					Add
 				</button>
